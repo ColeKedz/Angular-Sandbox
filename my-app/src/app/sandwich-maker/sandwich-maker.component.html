@@ -1,0 +1,22 @@
+<div>
+    <form>
+
+        <div *ngFor=" let bread of this.breads">
+            <label for="bread"> {{bread}} </label>
+            <input id="bread" type="radio">
+        </div>
+        <br>
+
+        <div *ngFor="let meat of this.meats">
+            <label for="{{meats}}">{{meat}}</label>
+            <input id='{{meats}}' type="checkbox">
+        </div>
+        <br>
+        
+        <div *ngFor="let veg of this.vegetables">
+            <label for="{{veg}}">{{veg}}</label>
+            <input id='{{veg}}' type="checkbox">
+        </div>
+
+    </form>
+</div>

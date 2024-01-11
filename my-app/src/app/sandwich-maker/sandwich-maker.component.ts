@@ -3,7 +3,7 @@ import { Component, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SandwhichDisplayComponent } from './sandwhich-display/sandwhich-display.component';
-import { SandwhichOrder } from '../../assets/interfaces';
+import { sandwichOrder } from '../../assets/interfaces';
 
 @Component({
   selector: 'sandwich-maker',
@@ -18,12 +18,12 @@ export class SandwichMakerComponent {
   data2 = {
     breads: ['White', 'Wheat', 'Rye'],
     meats: ['Chicken', 'Roast Beef', "Turkey", "Pastrami"],
-    vegetables: ['Tomatoe', 'Lettuce', 'Banana Peppers', 'Onion'],
+    vegetables: ['Tomato', 'Lettuce', 'Banana Peppers', 'Onion'],
     cheeses: ['Cheddar', 'Pepper Jack', 'American', 'Provolone'],
     condiments: ['Mayonnaise', 'Olive Oil', 'Vinegar', 'Pepper', 'Salt', 'Oregano']
   }
 
-  @Output() orderMade: SandwhichOrder = { 
+  @Output() orderMade: sandwichOrder = { 
     name : '',
     breads: '',
     meats: [],
@@ -74,7 +74,7 @@ export class SandwichMakerComponent {
 
 
   protected createOrder() {
-    let sandwhichOrder: SandwhichOrder = {
+    let sandwichOrder: sandwichOrder = {
       name: '',
       breads: '',
       meats: [],
@@ -83,14 +83,14 @@ export class SandwichMakerComponent {
       condiments: [],
     }
 
-    sandwhichOrder.name = this.orderForm.get('name')?.value;
-    sandwhichOrder.breads = this.orderForm.get('breads')?.value;
-    sandwhichOrder.meats = this.orderForm.get('meats')?.value;
-    sandwhichOrder.vegetables = this.orderForm.get('vegetables')?.value;
-    sandwhichOrder.cheeses = this.orderForm.get('cheeses')?.value;
-    sandwhichOrder.condiments = this.orderForm.get('condiments')?.value;
+    sandwichOrder.name = this.orderForm.get('name')?.value;
+    sandwichOrder.breads = this.orderForm.get('breads')?.value;
+    sandwichOrder.meats = this.orderForm.get('meats')?.value;
+    sandwichOrder.vegetables = this.orderForm.get('vegetables')?.value;
+    sandwichOrder.cheeses = this.orderForm.get('cheeses')?.value;
+    sandwichOrder.condiments = this.orderForm.get('condiments')?.value;
 
-    this.orderMade = sandwhichOrder;
+    this.orderMade = sandwichOrder;
 
     this.orderSubmitted = true;
 

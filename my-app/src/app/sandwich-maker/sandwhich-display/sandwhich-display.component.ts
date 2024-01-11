@@ -1,6 +1,6 @@
 import { Component, Inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SandwhichOrder } from '../../../assets/interfaces';
+import { sandwichOrder } from '../../../assets/interfaces';
 
 @Component({
   selector: 'app-sandwhich-display',
@@ -13,6 +13,6 @@ import { SandwhichOrder } from '../../../assets/interfaces';
 
 export class SandwhichDisplayComponent {
 
-  @Input() order: SandwhichOrder = {};
+  @Input() order: sandwichOrder = {};
 
 }

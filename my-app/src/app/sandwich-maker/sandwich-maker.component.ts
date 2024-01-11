@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
+import { SandwhichDisplayComponent } from './sandwhich-display/sandwhich-display.component';
+
 
 @Component({
   selector: 'sandwich-maker',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, SandwhichDisplayComponent],
   templateUrl: './sandwich-maker.component.html',
   styleUrl: './sandwich-maker.component.css'
 })
@@ -21,7 +23,7 @@ export class SandwichMakerComponent {
     condiments: ['Mayonnaise', 'Olive Oil', 'Vinegar', 'Pepper', 'Salt', 'Oregano']
   }
 
-  orderForm: FormGroup;
+  @Output() orderForm: FormGroup;
 
   // create form with formbuilder and designate form arrays and controlls.
   // FormArrays will handle multiple selections with check boxes

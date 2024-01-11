@@ -1,0 +1,19 @@
+<p>Thank you for your order {{this.order.name.value}}! <br> 
+    You ordered a sandwhich with:</p>
+<p>{{this.order.breads.value}} bread</p>
+
+<div *ngFor="let meat of this.order.meats.value">
+    <p>{{meat}}</p>
+</div>
+
+<div *ngFor="let cheese of this.order.cheeses.value">
+    <p>{{cheese}}</p>
+</div>
+
+<div *ngFor="let veg of this.order.vegetables.value">
+    <p>{{veg}}</p>
+</div>
+
+<div *ngFor="let condiment of this.order.condiments.value">
+    <p>{{condiment}}</p>
+</div>

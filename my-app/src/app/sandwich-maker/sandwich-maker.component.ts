@@ -3,7 +3,7 @@ import { Component, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SandwhichDisplayComponent } from './sandwhich-display/sandwhich-display.component';
-
+import { SandwhichOrder } from '../../assets/interfaces';
 
 @Component({
   selector: 'sandwich-maker',
@@ -23,7 +23,17 @@ export class SandwichMakerComponent {
     condiments: ['Mayonnaise', 'Olive Oil', 'Vinegar', 'Pepper', 'Salt', 'Oregano']
   }
 
-  @Output() orderForm: FormGroup;
+  @Output() orderMade: SandwhichOrder = { 
+    name : '',
+    breads: '',
+    meats: [],
+    cheeses: [],
+    vegetables: [],
+    condiments: []
+
+};
+  orderForm: FormGroup;
+  orderSubmitted: boolean = false;
 
   // create form with formbuilder and designate form arrays and controlls.
   // FormArrays will handle multiple selections with check boxes
@@ -36,6 +46,7 @@ export class SandwichMakerComponent {
       cheeses: new FormArray([]),
       condiments: new FormArray([])
     })
+
   }
 
   protected handleSelections(e: any) {
@@ -63,7 +74,30 @@ export class SandwichMakerComponent {
 
 
   protected createOrder() {
-    console.log(this.orderForm.value);
+    let sandwhichOrder: SandwhichOrder = {
+      name: '',
+      breads: '',
+      meats: [],
+      vegetables: [],
+      cheeses: [],
+      condiments: [],
+    }
+
+    sandwhichOrder.name = this.orderForm.get('name')?.value;
+    sandwhichOrder.breads = this.orderForm.get('breads')?.value;
+    sandwhichOrder.meats = this.orderForm.get('meats')?.value;
+    sandwhichOrder.vegetables = this.orderForm.get('vegetables')?.value;
+    sandwhichOrder.cheeses = this.orderForm.get('cheeses')?.value;
+    sandwhichOrder.condiments = this.orderForm.get('condiments')?.value;
+
+    this.orderMade = sandwhichOrder;
+
+    this.orderSubmitted = true;
+
+  }
+
+  protected clearOrder(){
+    this.orderSubmitted = false; 
   }
 
 }

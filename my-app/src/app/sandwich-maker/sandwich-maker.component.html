@@ -48,11 +48,12 @@
         </div>
         <br>
 
-        <button type="submit" onclick="">Submit Order</button>
+        <button type="submit" (click)="this.createOrder()">Submit Order</button>
+        <button type="reset" (click)="this.clearOrder()" > Clear Order</button>
 
     </form>
 
-    <div id="sandwich-display">
-        <app-sandwhich-display [order]="this.orderForm.controls"></app-sandwhich-display>
+    <div id="sandwich-display" *ngIf="orderSubmitted == true">
+        <app-sandwhich-display [order]="this.orderMade"></app-sandwhich-display>
     </div>
 </div>

@@ -1,14 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface sanwhichOrder {
-  name: string,
-  breads: string,
-  meats?: String[],
-  vegetables?: string[],
-  cheeses?: string[],
-  condiments?: string[]
-}
+import { SandwhichOrder } from '../../../assets/interfaces';
 
 @Component({
   selector: 'app-sandwhich-display',
@@ -19,14 +11,8 @@ interface sanwhichOrder {
 })
 
 
-export class SandwhichDisplayComponent implements OnInit {
-ngOnInit(): void {
-  console.log(this.order)
-}
+export class SandwhichDisplayComponent {
 
-@Input() order: any;  
-
-
-
+  @Input() order: SandwhichOrder = {};
 
 }

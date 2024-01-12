@@ -1,5 +1,5 @@
-<p>Thank you for your order {{this.order.name}}! <br> 
-    You ordered a sandwhich with:</p>
+<b>Thank you for your order {{this.order.name}}! <br> 
+    You ordered a sandwhich with:</b>
 <p>{{this.order.breads}} bread</p>
 
 <div *ngFor="let meat of this.order.meats">
@@ -7,7 +7,7 @@
 </div>
 
 <div *ngFor="let cheese of this.order.cheeses">
-    <p>{{cheese}}</p>
+    <p>{{cheese}} cheese</p>
 </div>
 
 <div *ngFor="let veg of this.order.vegetables">

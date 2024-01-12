@@ -23,17 +23,18 @@ export class SandwichMakerComponent {
     condiments: ['Mayonnaise', 'Olive Oil', 'Vinegar', 'Pepper', 'Salt', 'Oregano']
   }
 
-  @Output() orderMade: sandwichOrder = { 
-    name : '',
+  @Output() orderMade: sandwichOrder = {
+    name: '',
     breads: '',
     meats: [],
     cheeses: [],
     vegetables: [],
     condiments: []
 
-};
+  };
   orderForm: FormGroup;
   orderSubmitted: boolean = false;
+  orderValid: boolean = false;
 
   // create form with formbuilder and designate form arrays and controlls.
   // FormArrays will handle multiple selections with check boxes
@@ -46,6 +47,7 @@ export class SandwichMakerComponent {
       cheeses: new FormArray([]),
       condiments: new FormArray([])
     })
+
 
   }
 
@@ -83,6 +85,13 @@ export class SandwichMakerComponent {
       condiments: [],
     }
 
+    if (this.orderForm.get('breads')?.valid == false || this.orderForm.get('name')?.valid == false
+    ) {
+      this.orderSubmitted = true;
+      this.orderValid = false;
+      return
+    }
+
     sandwichOrder.name = this.orderForm.get('name')?.value;
     sandwichOrder.breads = this.orderForm.get('breads')?.value;
     sandwichOrder.meats = this.orderForm.get('meats')?.value;
@@ -93,11 +102,13 @@ export class SandwichMakerComponent {
     this.orderMade = sandwichOrder;
 
     this.orderSubmitted = true;
+    this.orderValid = true;
+
 
   }
 
-  protected clearOrder(){
-    this.orderSubmitted = false; 
+  protected clearOrder() {
+    this.orderSubmitted = false;
   }
 
 }

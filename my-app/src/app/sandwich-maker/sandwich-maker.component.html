@@ -3,19 +3,23 @@
 
         <div>
             <label for="name">Tell us your name: </label>
-            <input id="name" type="text" formControlName="name" required="true">
+            <input id="name" type="text" formControlName="name" required>
+            <div *ngIf="orderSubmitted && this.orderForm.get('name')?.valid ==false" class="error">Name is required
+            </div>
         </div>
 
         <br>
 
-        <p>Select your Bread:</p>
+
+        <b class="option-description">Select your Bread:</b>
         <div *ngFor=" let bread of data2.breads;">
             <label for="{{bread}}"> {{bread}} </label>
             <input id="{{bread}}" name="breads" type="radio" value="{{bread}}" formControlName="breads" required="true">
         </div>
+        <div *ngIf="orderSubmitted && this.orderForm.get('breads')?.valid ==false" class="error">Bread is required</div>
         <br>
 
-        <p>Pick one, none, or multiple meats:</p>
+        <b class="option-description">Pick one, none, or multiple meats:</b>
         <div *ngFor="let meat of this.data2.meats">
             <label for="{{meat}}">{{meat}}</label>
             <input id='{{meat}}' type="checkbox" name="meats" value="{{meat}}" formArrayName="meats"
@@ -23,24 +27,24 @@
         </div>
         <br>
 
-        <p>Cheese, cheeses, or no cheese?</p>
+        <b class="option-description">Cheese, cheeses, or no cheese?</b>
         <div formArrayName="cheeses">
             <div *ngFor=" let cheese of this.data2.cheeses;">
-                <label for="cheese"> {{cheese}} </label>
+                <label for="{{cheese}}"> {{cheese}} </label>
                 <input id="{{cheese}}" name="cheeses" type="checkbox" value={{cheese}}
                     (change)="handleSelections($event)">
             </div>
         </div>
         <br>
 
-        <p>Add vegetables if you like:</p>
+        <b class="option-description">Add vegetables if you like:</b>
         <div *ngFor="let veg of this.data2.vegetables">
             <label for="{{veg}}">{{veg}}</label>
             <input id='{{veg}}' type="checkbox" name="vegetables" value={{veg}} (change)="handleSelections($event)">
         </div>
         <br>
 
-        <p>Add condiments, or not:</p>
+        <b class="option-description">Add condiments, or not:</b>
         <div *ngFor="let condiment of this.data2.condiments">
             <label for="{{condiment}}">{{condiment}}</label>
             <input id='{{condiment}}' type="checkbox" name="condiments" value={{condiment}}
@@ -48,12 +52,12 @@
         </div>
         <br>
 
-        <button type="submit" (click)="this.createOrder()">Submit Order</button>
-        <button type="reset" (click)="this.clearOrder()" > Clear Order</button>
+        <button class="submitBtn" type="submit" (click)="this.createOrder()">Submit Order</button>
+        <button class="clearBtn" type="reset" (click)="this.clearOrder()"> Clear Order</button>
 
     </form>
 
-    <div id="sandwich-display" *ngIf="orderSubmitted == true">
+    <div id="sandwich-display" *ngIf="orderSubmitted && orderValid ">
         <app-sandwhich-display [order]="this.orderMade"></app-sandwhich-display>
     </div>
 </div>

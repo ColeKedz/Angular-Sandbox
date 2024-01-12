@@ -1,4 +1,4 @@
-export interface SandwhichOrder {
+export interface sandwichOrder {
     name?: '';
     breads?: '';
     meats?: [];

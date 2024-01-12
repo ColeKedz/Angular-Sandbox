@@ -4,11 +4,31 @@
     grid-template-rows: max-content;
 }
 
-#order-form{
-
-
+.error{
+    font-size: 8;
+    color: red;
 }
 
-#sandwhich-display{
+input.ng-invalid.ng-touched{
+    border-color: red;
+}
 
+.submitBtn{
+    background-color: #3e7999;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    margin-right: 20px;
+}
+
+.clearBtn{
+    background-color: #d14030ff;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    
+}
+
+.option-description{
+    margin-bottom: 5px;
 }
